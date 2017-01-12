@@ -19,33 +19,33 @@ namespace CrystalQuickStart {
 
     protected override void DefineOptions() {
       O = new Option("Drink", Options);
-      O.SetAction(DrinkAction.Name);
-      O.AddConsideration(ThirstConsideration.Name);
+      IsOkay(O.SetAction(DrinkAction.Name));
+      IsOkay(O.AddConsideration(ThirstConsideration.Name));
 
       O = new Option("Eat", Options);
-      O.SetAction(EatAction.Name);
-      O.AddConsideration(HungerConsideration.Name);
+      IsOkay(O.SetAction(EatAction.Name));
+      IsOkay(O.AddConsideration(HungerConsideration.Name));
 
       O = new Option("Toilet", Options);
-      O.SetAction(ToiletAction.Name);
-      O.AddConsideration(BladderConsideration.Name);
+      IsOkay(O.SetAction(ToiletAction.Name));
+      IsOkay(O.AddConsideration(BladderConsideration.Name));
 
       O = new ConstantUtilityOption("Idle", Options);
-      O.SetAction(IdleAction.Name);
+      IsOkay(O.SetAction(IdleAction.Name));
       O.DefaultUtility = new Utility(0.01f, 1f);
     }
 
     protected override void DefineBehaviours() {
       B = new Behaviour("DefaultBehaviour", Behaviours);
-      B.AddOption("Drink");
-      B.AddOption("Eat");
-      B.AddOption("Toilet");
-      B.AddOption("Idle");
+      IsOkay(B.AddOption("Drink"));
+      IsOkay(B.AddOption("Eat"));
+      IsOkay(B.AddOption("Toilet"));
+      IsOkay(B.AddOption("Idle"));
     }
 
     protected override void ConfigureAi() {
       Ai = new UtilityAi("QuickStartAi", AIs);
-      Ai.AddBehaviour("DefaultBehaviour");
+      IsOkay(Ai.AddBehaviour("DefaultBehaviour"));
     }
 
     public QsAiConstructor() : base(AiCollectionConstructor.Create()) {

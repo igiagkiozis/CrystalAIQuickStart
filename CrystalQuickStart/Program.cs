@@ -28,6 +28,8 @@ namespace CrystalQuickStart {
       for(int i = 0; i < N; i++) {
         var toon = new Toon(string.Format("Toon {0}", i));
         var dm = new DecisionMaker(aiConstructor.Create("QuickStartAi"), toon, scheduler) {
+          // Every AI will be updated 4-5 times per second with these settings. 
+          // If you need this to me more or less often modify the delays accordingly. 
           ThinkDelayMin = 0.2f,
           ThinkDelayMax = 0.25f
         };
